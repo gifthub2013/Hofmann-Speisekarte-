@@ -107,11 +107,11 @@
       "article": "8305",
       "name": "Zartes Kalbsschnitzel paniert",
       "imageUrl": null,
-      "imageType": "official_page_image",
-      "sourceUrl": "https://hofmanns-shop.de/products/schnitzel-box",
+      "imageType": "official_photo",
+      "sourceUrl": "https://hofmanns-shop.de/pages/schnitzelbox-landingpage",
       "licenseStatus": "unverified",
-      "reviewStatus": "official_photo_variant_check",
-      "notes": "Originalfoto vorhanden, Beilagenvariante abgleichen"
+      "reviewStatus": "official_image_confirmed_variant_differs",
+      "notes": "Hersteller zeigt Kalbsschnitzel mit Sahnesauce, Rösti-Ecken und Gemüse; App nennt Salzkartoffeln, deshalb Bild als abweichende Variante kennzeichnen."
     },
     {
       "article": "6720",
@@ -130,7 +130,8 @@
       "imageType": "pending",
       "sourceUrl": null,
       "licenseStatus": "unverified",
-      "reviewStatus": "needs_image"
+      "reviewStatus": "avoid_misleading_photo",
+      "notes": "Schnitzel à la Carbonara zeigt Spinat-Spaghetti, ist aber kein Foto der Rucola-Spinat-Spaghetti. Nicht als Originalfoto verwenden."
     },
     {
       "article": "48526",
@@ -173,11 +174,11 @@
       "article": "48210",
       "name": "Jägerschnitzel",
       "imageUrl": null,
-      "imageType": "official_page_image",
+      "imageType": "official_photo",
       "sourceUrl": "https://hofmanns-shop.de/products/jagerschnitzel",
       "licenseStatus": "unverified",
-      "reviewStatus": "official_product_page_verified",
-      "notes": "550 g und Beilagen stimmen mit App überein; direkte Bild-URL noch ausstehend"
+      "reviewStatus": "official_image_confirmed",
+      "notes": "Originalfoto mit Champignon-Rahmsoße und Pommes, 550g; Katalog bestätigt Art. 48210."
     }
   ]
 }
