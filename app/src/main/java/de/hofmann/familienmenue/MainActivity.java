@@ -1,6 +1,8 @@
 package de.hofmann.familienmenue;
 
 import android.app.Activity;
+import android.app.TimePickerDialog;
+import java.util.Calendar;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -47,6 +49,20 @@ public class MainActivity extends Activity {
   TextView text(String s,int sp,boolean bold){TextView t=new TextView(this);t.setText(s);t.setTextSize(sp);t.setTextColor(Color.rgb(33,48,39));if(bold)t.setTypeface(null,Typeface.BOLD);t.setPadding(4,7,4,7);return t;}
   void button(LinearLayout box,String label,Runnable action){Button b=new Button(this);b.setText(label);b.setAllCaps(false);b.setOnClickListener(v->action.run());box.addView(b);}
   String key(String id,int n){return id+"-"+n;}
+  void choosePreparationTime(String k,String person) {
+    Calendar now=Calendar.getInstance();
+    String existing=prefs.getString("planned-"+k,"");
+    int hour=now.get(Calendar.HOUR_OF_DAY), minute=now.get(Calendar.MINUTE);
+    if(existing.matches("\\d{2}:\\d{2}")) {
+      hour=Integer.parseInt(existing.substring(0,2));
+      minute=Integer.parseInt(existing.substring(3,5));
+    }
+    new TimePickerDialog(this,(picker,h,m)->{
+      String time=String.format(Locale.GERMANY,"%02d:%02d",h,m);
+      prefs.edit().putString("planned-"+k,time).apply();
+      change(k,person);
+    },hour,minute,true).show();
+  }
   void change(String k,String value){
     SharedPreferences.Editor e=prefs.edit();
     String old=prefs.getString(k,"");
@@ -56,6 +72,7 @@ public class MainActivity extends Activity {
       e.putString("history-"+k,person+"|"+date);
     }
     if(!"done".equals(value)&&"done".equals(old))e.remove("history-"+k);
+    if(value.isEmpty())e.remove("planned-"+k);
     e.putString(k,value).apply();render();
   }
   void render(){
@@ -83,8 +100,13 @@ public class MainActivity extends Activity {
         final String k=key(m[1],j);String v=prefs.getString(k,"");if(v.equals("done"))continue;
         LinearLayout slot=new LinearLayout(this);slot.setOrientation(1);slot.setPadding(10,10,10,10);slot.setBackground(bg(Color.rgb(237,243,239)));
         slot.addView(text("Portion "+j+" · "+(v.isEmpty()?"verfügbar":"reserviert von "+v),14,true));
-        if(v.isEmpty())button(slot,"Für ausgewählte Person reservieren",()->change(k,user.getSelectedItem().toString()));
-        else button(slot,"Reservierung freigeben",()->change(k,""));
+        if(v.isEmpty())button(slot,"Reservieren und Uhrzeit wählen",()->choosePreparationTime(k,user.getSelectedItem().toString()));
+        else {
+          String planned=prefs.getString("planned-"+k,"");
+          slot.addView(text("Geplante Zubereitung: "+(planned.isEmpty()?"nicht angegeben":planned+" Uhr"),14,false));
+          button(slot,"Uhrzeit ändern",()->choosePreparationTime(k,v));
+          button(slot,"Reservierung freigeben",()->change(k,""));
+        }
         button(slot,"Zubereitet · aus Liste entfernen",()->change(k,"done"));
         LinearLayout.LayoutParams sp=new LinearLayout.LayoutParams(-1,-2);sp.setMargins(0,4,0,8);card.addView(slot,sp);
       }
