@@ -49,6 +49,8 @@ public class MainActivity extends Activity {
   String searchQuery="";
   String filter="Alle";
   String expandedArticle="";
+  int dp(float n){return (int)(n*getResources().getDisplayMetrics().density+0.5f);}
+  int spColor=Color.rgb(32,69,48);
   int green=Color.rgb(28,83,56);
   int cream=Color.rgb(247,249,246);
   int lime=Color.rgb(190,235,83);
@@ -104,6 +106,7 @@ public class MainActivity extends Activity {
   }
   void render(){
     getWindow().setStatusBarColor(green);
+    getWindow().getDecorView().setSystemUiVisibility(0);
     getWindow().setNavigationBarColor(Color.rgb(247,249,246));
     ScrollView scroll=new ScrollView(this);
     LinearLayout root=new LinearLayout(this);
@@ -153,11 +156,11 @@ public class MainActivity extends Activity {
     root.addView(search);gap(root,10);
     LinearLayout tabs=new LinearLayout(this);tabs.setOrientation(0);
     for(String label:new String[]{"Alle","Frei","Reserviert"}){
-      Button tabButton=new Button(this);tabButton.setText(label);tabButton.setTextSize(12);tabButton.setAllCaps(false);
+      TextView tabButton=text(label,14,true);tabButton.setGravity(Gravity.CENTER);
       tabButton.setTextColor(label.equals(filter)?Color.WHITE:green);
       tabButton.setBackground(bg(label.equals(filter)?green:Color.rgb(229,237,229)));
       tabButton.setOnClickListener(v->{filter=label;render();});
-      LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(0,48,1);lp.setMargins(2,0,2,0);tabs.addView(tabButton,lp);
+      LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(0,dp(46),1);lp.setMargins(dp(2),0,dp(2),0);tabs.addView(tabButton,lp);
     }
     root.addView(tabs);gap(root,8);
     list=new LinearLayout(this);list.setOrientation(1);root.addView(list);
@@ -176,7 +179,7 @@ public class MainActivity extends Activity {
         root.addView(history);gap(root,7);
       }
     }
-    root.addView(text("Familien-Testversion · Auswahl bleibt auf diesem Gerät gespeichert",11,false));
+    root.addView(text("Auswahl wird auf diesem Gerät gespeichert. Eine Synchronisierung zwischen Handys ist noch nicht eingerichtet.",11,false));
   }
   void populateMenuList(){
     if(list==null)return;
@@ -197,7 +200,7 @@ public class MainActivity extends Activity {
       LinearLayout headline=new LinearLayout(this);headline.setOrientation(0);headline.setGravity(Gravity.CENTER_VERTICAL);
       TextView photo=text(foodIcon(m[1]),39,true);photo.setGravity(Gravity.CENTER);
       photo.setBackground(bg(Color.rgb(238,243,230)));
-      headline.addView(photo,new LinearLayout.LayoutParams(94,94));
+      headline.addView(photo,new LinearLayout.LayoutParams(dp(96),dp(96)));
       LinearLayout details=new LinearLayout(this);details.setOrientation(1);details.setPadding(14,0,0,0);
       details.addView(text(m[0],19,true));
       details.addView(text(m[2]+" g  ·  Art. "+m[1],12,false));
@@ -206,7 +209,7 @@ public class MainActivity extends Activity {
       card.addView(headline);
       boolean expanded=expandedArticle.equals(m[1]);
       Button toggle=new Button(this);toggle.setAllCaps(false);
-      toggle.setText(expanded?"Weniger anzeigen  ⌃":"Gericht ansehen & auswählen  ⌄");
+      toggle.setText(expanded?"Details schließen  ⌃":"Auswählen  ⌄");
       toggle.setOnClickListener(v->{expandedArticle=expanded? "":m[1];render();});
       card.addView(toggle);
       if(expanded){
@@ -225,7 +228,7 @@ public class MainActivity extends Activity {
             button(slot,"Uhrzeit ändern",()->choosePreparationTime(k,value));
             button(slot,"Reservierung freigeben",()->change(k,""));
           }
-          button(slot,"✓ Als gegessen markieren",()->change(k,"done"));
+          button(slot,"✓ Gegessen",()->change(k,"done"));
           card.addView(slot);gap(card,6);
         }
       }
