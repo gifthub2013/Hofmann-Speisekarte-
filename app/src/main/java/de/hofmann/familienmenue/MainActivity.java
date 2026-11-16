@@ -55,6 +55,7 @@ public class MainActivity extends Activity {
   boolean compactMode=false;
   String searchQuery="";
   String filter="Alle";
+  String categoryFilter="Alle";
   String expandedArticle="";
   int dp(float n){return (int)(n*getResources().getDisplayMetrics().density+0.5f);}
   int spColor=Color.rgb(32,69,48);
@@ -63,9 +64,25 @@ public class MainActivity extends Activity {
   int lime=Color.rgb(190,235,83);
   String photoUrl(String id){
     switch(id){
-      case "48073":return "https://hofmanns-shop.de/cdn/shop/files/gruenkohl-norddeutsche-art_48073_1_ecb3b396-b3b4-4336-9da3-7ab0a0074cc0.png?v=1773871589&width=1000";
-      case "48087":return "https://hofmanns-shop.de/cdn/shop/files/48087_Schweinesteak_au_four_1000x800px.png?v=1773871856&width=1000";
-      case "48526":return "https://hofmanns-shop.de/cdn/shop/files/48526_1000x800px.png?v=1775028325&width=1000";
+      case "48093":return "https://img.hellofresh.com/f_auto%2Cfl_lossy%2Ch_640%2Cq_auto%2Cw_1200/hellofresh_s3/image/HF_Y23_R72_W22_BNL_P6768-1_Main__3low-3d47e17e.jpg";
+      case "6816":return "https://www.arise-app.com/images/dishes/de/kartoffeleintopf-r25a7k.webp";
+      case "48939":return "https://media.hellofresh.com/q_100%2Cw_3840%2Cf_auto%2Cc_limit%2Cfl_lossy/recipes/image/HF220907_R32_W44_DE_R4301-1_MB_Main_2_low-51f3618e.jpg";
+      case "48087":return "https://hofmanns-shop.de/cdn/shop/files/48087_Schweinesteak_au_four_720ef597-8081-4fdc-b577-00d11ff5dd09.png?v=1774605637";
+      case "48076":return "https://dishlocal.com/restaurants/images/dishes-png/grillteller-mix.png";
+      case "7215":return "https://www.daskochrezept.de/sites/daskochrezept.de/files/styles/full_width_tablet_4_3/public/2021-05/kassler_mit_sauerkraut_1.jpg?h=a1e1a043u0026itok%3DSYaA6weH";
+      case "48528":return "https://www.unileverfoodsolutions.at/dam/global-ufs/mcos/dach/calcmenu-recipes/ch-recipes/2023/plantmade-q2/plantmade-q2-salatbowle-mit-spinat-und-crispychicken/plantmade-q2-salatbowle-mit-spinat-und-crispychicken-header.jpg";
+      case "48461":return "https://s3.eu-west-3.amazonaws.com/fr.du-jour.menu.medias/0/7/8/3/3/407833/25702_1769617595.jpeg";
+      case "48418":return "https://fivi.gg/cdn/shop/articles/wurstchengulasch_blogbild_v1.jpg?v=1773673867";
+      case "6315":return "https://primary.jwwb.nl/public/i/z/n/temp-tdhskojadwuiusgmymlr/13544-00-high.jpg?enable=upscale&enable-io=true&fit=bounds&width=1200";
+      case "7914":return "https://static.chefkoch-cdn.de/ck.de/rezepte/152/152136/1121563-960x720-quark-griess-pfirsich-auflauf.jpg";
+      case "8305":return "https://hofmanns-shop.de/cdn/shop/products/zartes-kalbsschnitzel-paniert_48300_2.jpg?v=1773871139&width=1445";
+      case "6720":return "https://storefront-prod.de.picnicinternational.com/static/images/recipes/8887f312e0e7f4f44043e8dc17c980626b3a73f06a93245667a44eb47c462be2/filled-600x600.webp";
+      case "48909":return "https://hofmanns-shop.de/cdn/shop/files/rucola-spinat-spaghetti_48909_2_9174a22b-51b9-4e46-9d9e-3c83936a82e3.jpg?v=1773871611";
+      case "48526":return "https://production-media.gousto.co.uk/cms/mood-image/2032---10-Min-Creamy-Tomato--Chicken-Gnocchi-0086-1638875810949-x700.jpg";
+      case "41001":return "https://img.chefkoch-cdn.de/rezepte/1900801309789793/bilder/368419/crop-960x540/schweinefleisch-ruegener-art.jpg";
+      case "48073":return "https://www.univers-reisen.de/fileadmin/processed_files/8/a/csm_iStock-2027208998_Gruenkohl_Wurst_Fleisch_xl_0bc288d402.webp";
+      case "7524":return "https://hofmanns-shop.de/cdn/shop/files/Weihnachten-Entenkeule_715d3edc-f32d-4176-a4d9-3d87ab9171b9.jpg?v=1700234541&width=1420";
+      case "48210":return "https://schmackhaftesleben.de/assets/images/1760135433093-ljqnp16s.jpg";
       default:return null;
     }
   }
@@ -188,6 +205,18 @@ public class MainActivity extends Activity {
       LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(0,dp(46),1);lp.setMargins(dp(2),0,dp(2),0);tabs.addView(tabButton,lp);
     }
     root.addView(tabs);gap(root,8);
+    HorizontalScrollView categories=new HorizontalScrollView(this);
+    categories.setHorizontalScrollBarEnabled(false);
+    LinearLayout chips=new LinearLayout(this);
+    for(String label:new String[]{"Alle","Vegan","Vegetarisch","Fleisch","Geflügel","Süßes"}){
+      TextView chip=text(label,13,true);
+      chip.setPadding(dp(15),dp(11),dp(15),dp(11));
+      chip.setTextColor(label.equals(categoryFilter)?Color.WHITE:green);
+      chip.setBackground(bg(label.equals(categoryFilter)?green:Color.rgb(232,240,231)));
+      chip.setOnClickListener(v->{categoryFilter=label;render();});
+      LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(-2,-2);lp.setMargins(0,0,dp(7),0);chips.addView(chip,lp);
+    }
+    categories.addView(chips);root.addView(categories);gap(root,8);
     list=new LinearLayout(this);list.setOrientation(1);root.addView(list);
     populateMenuList();
     gap(root,18);
@@ -206,6 +235,15 @@ public class MainActivity extends Activity {
     }
     root.addView(text("Auswahl wird auf diesem Gerät gespeichert. Eine Synchronisierung zwischen Handys ist noch nicht eingerichtet.",11,false));
   }
+  String category(String id){
+    switch(id){
+      case "48939":case "48909":return "Vegan";
+      case "48093":case "6816":case "6315":return "Vegetarisch";
+      case "7914":return "Süßes";
+      case "48528":case "48526":case "7524":return "Geflügel";
+      default:return "Fleisch";
+    }
+  }
   void populateMenuList(){
     if(list==null)return;
     list.removeAllViews();
@@ -217,6 +255,7 @@ public class MainActivity extends Activity {
         if(value.isEmpty())free++;else if(!value.equals("done"))reserved++;
       }
       if(free+reserved==0)continue;
+      if(!categoryFilter.equals("Alle")&&!categoryFilter.equals(category(m[1])))continue;
       if(filter.equals("Frei")&&free==0)continue;
       if(filter.equals("Reserviert")&&reserved==0)continue;
       LinearLayout card=new LinearLayout(this);card.setOrientation(1);
@@ -237,7 +276,7 @@ public class MainActivity extends Activity {
       }
       LinearLayout details=new LinearLayout(this);details.setOrientation(1);details.setPadding(14,0,0,0);
       details.addView(text(m[0],19,true));
-      details.addView(text(m[2]+" g  ·  Art. "+m[1],12,false));
+      details.addView(text(category(m[1])+"  ·  "+m[2]+" g",12,false));
       TextView status=pill(free+" frei  ·  "+reserved+" reserviert",green);details.addView(status);
       headline.addView(details,new LinearLayout.LayoutParams(0,-2,1));
       card.addView(headline);
