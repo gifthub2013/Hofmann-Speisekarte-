@@ -47,10 +47,10 @@ public class MainActivity extends Activity {
     ScrollView scroll=new ScrollView(this);scroll.setFillViewport(true);
     LinearLayout root=new LinearLayout(this);root.setOrientation(1);root.setPadding(22,24,22,24);root.setBackgroundColor(Color.rgb(246,247,242));scroll.addView(root);setContentView(scroll);
     root.addView(text("🍽 Unsere HOFMANNs-Speisekarte",25,true));
-    root.addView(text("19 Gerichte · Auswahl für Joel, Hannas und Nicole",14,false));
+    root.addView(text("19 Gerichte · Auswahl für Joel, Hannes und Nicole",14,false));
     TextView warning=text("Lokale Testversion: Änderungen sind noch nicht zwischen den Handys synchronisiert. Portionszahlen aus der Fotoauswertung müssen auf Doppelbilder geprüft werden. Originalfotos folgen.",13,false);warning.setBackground(bg(Color.rgb(255,244,208)));warning.setPadding(14,14,14,14);root.addView(warning);
     root.addView(text("Wer wählt aus?",17,true));
-    user=new Spinner(this);String[] people={"Joel","Hannas","Nicole"};ArrayAdapter<String> adapter=new ArrayAdapter<>(this,android.R.layout.simple_spinner_dropdown_item,people);user.setAdapter(adapter);String last=prefs.getString("person","Joel");for(int i=0;i<people.length;i++)if(people[i].equals(last))user.setSelection(i);user.setOnItemSelectedListener(new android.widget.AdapterView.OnItemSelectedListener(){public void onNothingSelected(android.widget.AdapterView<?> p){}public void onItemSelected(android.widget.AdapterView<?> p,View v,int pos,long id){prefs.edit().putString("person",people[pos]).apply();}});root.addView(user);
+    user=new Spinner(this);String[] people={"Joel","Hannes","Nicole"};ArrayAdapter<String> adapter=new ArrayAdapter<>(this,android.R.layout.simple_spinner_dropdown_item,people);user.setAdapter(adapter);String last=prefs.getString("person","Joel");for(int i=0;i<people.length;i++)if(people[i].equals(last))user.setSelection(i);user.setOnItemSelectedListener(new android.widget.AdapterView.OnItemSelectedListener(){public void onNothingSelected(android.widget.AdapterView<?> p){}public void onItemSelected(android.widget.AdapterView<?> p,View v,int pos,long id){prefs.edit().putString("person",people[pos]).apply();}});root.addView(user);
     int free=0,res=0,done=0;
     for(String[] m:menus)for(int j=1;j<=Integer.parseInt(m[3]);j++){String v=prefs.getString(key(m[1],j),"");if(v.equals("done"))done++;else if(v.isEmpty())free++;else res++;}
     root.addView(text(free+" verfügbar · "+res+" reserviert · "+done+" zubereitet",16,true));
