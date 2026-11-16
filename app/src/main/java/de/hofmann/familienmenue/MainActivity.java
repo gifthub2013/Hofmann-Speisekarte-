@@ -153,11 +153,11 @@ public class MainActivity extends Activity {
     root.addView(search);gap(root,10);
     LinearLayout tabs=new LinearLayout(this);tabs.setOrientation(0);
     for(String label:new String[]{"Alle","Frei","Reserviert"}){
-      Button b=new Button(this);b.setText(label);b.setTextSize(12);b.setAllCaps(false);
-      b.setTextColor(label.equals(filter)?Color.WHITE:green);
-      b.setBackground(bg(label.equals(filter)?green:Color.rgb(229,237,229)));
-      b.setOnClickListener(v->{filter=label;render();});
-      LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(0,48,1);lp.setMargins(2,0,2,0);tabs.addView(b,lp);
+      Button tabButton=new Button(this);tabButton.setText(label);tabButton.setTextSize(12);tabButton.setAllCaps(false);
+      tabButton.setTextColor(label.equals(filter)?Color.WHITE:green);
+      tabButton.setBackground(bg(label.equals(filter)?green:Color.rgb(229,237,229)));
+      tabButton.setOnClickListener(v->{filter=label;render();});
+      LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(0,48,1);lp.setMargins(2,0,2,0);tabs.addView(tabButton,lp);
     }
     root.addView(tabs);gap(root,8);
     list=new LinearLayout(this);list.setOrientation(1);root.addView(list);
