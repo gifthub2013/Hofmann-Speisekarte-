@@ -51,10 +51,11 @@
       "article": "7215",
       "name": "Herzhafter Kasseler Nacken",
       "imageUrl": null,
-      "imageType": "pending",
-      "sourceUrl": null,
+      "imageType": "comparison",
+      "sourceUrl": "https://hofmanns-shop.de/products/kasseler-in-honig-senf-sosse",
       "licenseStatus": "unverified",
-      "reviewStatus": "needs_image"
+      "reviewStatus": "similar_variant_only",
+      "notes": "Honig-Senf/Wirsing statt Sauerkraut/Kartoffelpüree; besser vorhandenes Bild aus Screenshots"
     },
     {
       "article": "48528",
@@ -88,9 +89,10 @@
       "name": "Kartoffeltaschen",
       "imageUrl": null,
       "imageType": "pending",
-      "sourceUrl": null,
+      "sourceUrl": "https://hofmanns-shop.de/pages/superfoods",
       "licenseStatus": "unverified",
-      "reviewStatus": "needs_image"
+      "reviewStatus": "photo_not_confirmed",
+      "notes": "Hersteller erwähnt Kartoffeltaschen, Einzelbild nicht nachgewiesen"
     },
     {
       "article": "7914",
@@ -105,19 +107,21 @@
       "article": "8305",
       "name": "Zartes Kalbsschnitzel paniert",
       "imageUrl": null,
-      "imageType": "pending",
-      "sourceUrl": null,
+      "imageType": "official_page_image",
+      "sourceUrl": "https://hofmanns-shop.de/products/schnitzel-box",
       "licenseStatus": "unverified",
-      "reviewStatus": "needs_image"
+      "reviewStatus": "official_photo_variant_check",
+      "notes": "Originalfoto vorhanden, Beilagenvariante abgleichen"
     },
     {
       "article": "6720",
       "name": "Schaschlikpfanne",
       "imageUrl": null,
-      "imageType": "pending",
-      "sourceUrl": null,
+      "imageType": "comparison",
+      "sourceUrl": "https://hofmanns-shop.de/products/feurige-schaschlikpfanne",
       "licenseStatus": "unverified",
-      "reviewStatus": "needs_image"
+      "reviewStatus": "similar_variant_only",
+      "notes": "Shopvariante mit Pommes 530g; Appvariante Reis 390g. Nicht als identisches Produkt kennzeichnen"
     },
     {
       "article": "48909",
@@ -159,19 +163,21 @@
       "article": "7524",
       "name": "Zarte Entenkeule",
       "imageUrl": null,
-      "imageType": "pending",
-      "sourceUrl": null,
+      "imageType": "official_page_image",
+      "sourceUrl": "https://hofmanns-shop.de/pages/reinheitsgebot",
       "licenseStatus": "unverified",
-      "reviewStatus": "needs_image"
+      "reviewStatus": "official_photo_variant_check",
+      "notes": "Hersteller zeigt Entenkeule mit Bratapfelsoße, Rotkohl und Klößen"
     },
     {
       "article": "48210",
       "name": "Jägerschnitzel",
       "imageUrl": null,
-      "imageType": "pending",
-      "sourceUrl": null,
+      "imageType": "official_page_image",
+      "sourceUrl": "https://hofmanns-shop.de/products/jagerschnitzel",
       "licenseStatus": "unverified",
-      "reviewStatus": "needs_image"
+      "reviewStatus": "official_product_page_verified",
+      "notes": "550 g und Beilagen stimmen mit App überein; direkte Bild-URL noch ausstehend"
     }
   ]
 }
