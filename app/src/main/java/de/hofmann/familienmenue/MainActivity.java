@@ -8,6 +8,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Handler;
+import android.os.Looper;
+import java.net.URL;
+import java.net.HttpURLConnection;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -54,6 +61,24 @@ public class MainActivity extends Activity {
   int green=Color.rgb(28,83,56);
   int cream=Color.rgb(247,249,246);
   int lime=Color.rgb(190,235,83);
+  String photoUrl(String id){
+    switch(id){
+      case "48073":return "https://hofmanns-shop.de/cdn/shop/files/gruenkohl-norddeutsche-art_48073_1_ecb3b396-b3b4-4336-9da3-7ab0a0074cc0.png?v=1773871589&width=1000";
+      case "48087":return "https://hofmanns-shop.de/cdn/shop/files/48087_Schweinesteak_au_four_1000x800px.png?v=1773871856&width=1000";
+      case "48526":return "https://hofmanns-shop.de/cdn/shop/files/48526_1000x800px.png?v=1775028325&width=1000";
+      default:return null;
+    }
+  }
+  void loadPhoto(ImageView view,String url){
+    new Thread(()->{
+      try{
+        HttpURLConnection conn=(HttpURLConnection)new URL(url).openConnection();
+        conn.setConnectTimeout(7000);conn.setReadTimeout(9000);
+        Bitmap bitmap=BitmapFactory.decodeStream(conn.getInputStream());conn.disconnect();
+        if(bitmap!=null)new Handler(Looper.getMainLooper()).post(()->view.setImageBitmap(bitmap));
+      }catch(Exception ignored){}
+    }).start();
+  }
   String foodIcon(String id){
     switch(id){
       case "48093":case "48939":case "48909":return "🍝";
@@ -198,9 +223,18 @@ public class MainActivity extends Activity {
       card.setPadding(15,14,15,14);card.setBackground(bg(Color.WHITE));
       LinearLayout.LayoutParams cp=new LinearLayout.LayoutParams(-1,-2);cp.setMargins(0,6,0,8);
       LinearLayout headline=new LinearLayout(this);headline.setOrientation(0);headline.setGravity(Gravity.CENTER_VERTICAL);
-      TextView photo=text(foodIcon(m[1]),39,true);photo.setGravity(Gravity.CENTER);
-      photo.setBackground(bg(Color.rgb(238,243,230)));
-      headline.addView(photo,new LinearLayout.LayoutParams(dp(96),dp(96)));
+      String imageUrl=photoUrl(m[1]);
+      if(imageUrl!=null){
+        ImageView photo=new ImageView(this);
+        photo.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        photo.setBackground(bg(Color.rgb(238,243,230)));
+        headline.addView(photo,new LinearLayout.LayoutParams(dp(118),dp(118)));
+        loadPhoto(photo,imageUrl);
+      }else{
+        TextView photo=text(foodIcon(m[1]),39,true);photo.setGravity(Gravity.CENTER);
+        photo.setBackground(bg(Color.rgb(238,243,230)));
+        headline.addView(photo,new LinearLayout.LayoutParams(dp(96),dp(96)));
+      }
       LinearLayout details=new LinearLayout(this);details.setOrientation(1);details.setPadding(14,0,0,0);
       details.addView(text(m[0],19,true));
       details.addView(text(m[2]+" g  ·  Art. "+m[1],12,false));
