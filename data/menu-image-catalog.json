@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 1,
+  "note": "Artikelnummern und Namen aus MainActivity.java; Bild-URLs erst nach Quellen- und Lizenzprüfung freigeben. Vergleichsbilder eindeutig kennzeichnen.",
+  "items": [
+    {
+      "article": "48093",
+      "name": "Tagliatelle mit weißem Spargel",
+      "imageUrl": null,
+      "imageType": "pending",
+      "sourceUrl": null,
+      "licenseStatus": "unverified",
+      "reviewStatus": "needs_image"
+    },
+    {
+      "article": "6816",
+      "name": "Kartoffel-Gemüseeintopf",
+      "imageUrl": null,
+      "imageType": "pending",
+      "sourceUrl": null,
+      "licenseStatus": "unverified",
+      "reviewStatus": "needs_image"
+    },
+    {
+      "article": "48939",
+      "name": "Planted Hack Bolognese Style",
+      "imageUrl": null,
+      "imageType": "pending",
+      "sourceUrl": null,
+      "licenseStatus": "unverified",
+      "reviewStatus": "needs_image"
+    },
+    {
+      "article": "48087",
+      "name": "Schweinesteak au four",
+      "imageUrl": null,
+      "imageType": "pending",
+      "sourceUrl": null,
+      "licenseStatus": "unverified",
+      "reviewStatus": "needs_image"
+    },
+    {
+      "article": "48076",
+      "name": "Grillteller Griechische Art",
+      "imageUrl": null,
+      "imageType": "pending",
+      "sourceUrl": null,
+      "licenseStatus": "unverified",
+      "reviewStatus": "needs_image"
+    },
+    {
+      "article": "7215",
+      "name": "Herzhafter Kasseler Nacken",
+      "imageUrl": null,
+      "imageType": "pending",
+      "sourceUrl": null,
+      "licenseStatus": "unverified",
+      "reviewStatus": "needs_image"
+    },
+    {
+      "article": "48528",
+      "name": "Green Chicken Bowl",
+      "imageUrl": null,
+      "imageType": "pending",
+      "sourceUrl": null,
+      "licenseStatus": "unverified",
+      "reviewStatus": "needs_image"
+    },
+    {
+      "article": "48461",
+      "name": "Chili-Käse-Bällchen",
+      "imageUrl": null,
+      "imageType": "pending",
+      "sourceUrl": null,
+      "licenseStatus": "unverified",
+      "reviewStatus": "needs_image"
+    },
+    {
+      "article": "48418",
+      "name": "Würstchengulasch",
+      "imageUrl": null,
+      "imageType": "pending",
+      "sourceUrl": null,
+      "licenseStatus": "unverified",
+      "reviewStatus": "needs_image"
+    },
+    {
+      "article": "6315",
+      "name": "Kartoffeltaschen",
+      "imageUrl": null,
+      "imageType": "pending",
+      "sourceUrl": null,
+      "licenseStatus": "unverified",
+      "reviewStatus": "needs_image"
+    },
+    {
+      "article": "7914",
+      "name": "Grießauflauf",
+      "imageUrl": null,
+      "imageType": "pending",
+      "sourceUrl": null,
+      "licenseStatus": "unverified",
+      "reviewStatus": "needs_image"
+    },
+    {
+      "article": "8305",
+      "name": "Zartes Kalbsschnitzel paniert",
+      "imageUrl": null,
+      "imageType": "pending",
+      "sourceUrl": null,
+      "licenseStatus": "unverified",
+      "reviewStatus": "needs_image"
+    },
+    {
+      "article": "6720",
+      "name": "Schaschlikpfanne",
+      "imageUrl": null,
+      "imageType": "pending",
+      "sourceUrl": null,
+      "licenseStatus": "unverified",
+      "reviewStatus": "needs_image"
+    },
+    {
+      "article": "48909",
+      "name": "Rucola-Spinat-Spaghetti",
+      "imageUrl": null,
+      "imageType": "pending",
+      "sourceUrl": null,
+      "licenseStatus": "unverified",
+      "reviewStatus": "needs_image"
+    },
+    {
+      "article": "48526",
+      "name": "Sahne-Tomaten-Hähnchen",
+      "imageUrl": null,
+      "imageType": "pending",
+      "sourceUrl": null,
+      "licenseStatus": "unverified",
+      "reviewStatus": "needs_image"
+    },
+    {
+      "article": "41001",
+      "name": "Schweinefleisch Rügener Art",
+      "imageUrl": null,
+      "imageType": "pending",
+      "sourceUrl": null,
+      "licenseStatus": "unverified",
+      "reviewStatus": "needs_image"
+    },
+    {
+      "article": "48073",
+      "name": "Grünkohl Norddeutsche Art",
+      "imageUrl": null,
+      "imageType": "pending",
+      "sourceUrl": null,
+      "licenseStatus": "unverified",
+      "reviewStatus": "needs_image"
+    },
+    {
+      "article": "7524",
+      "name": "Zarte Entenkeule",
+      "imageUrl": null,
+      "imageType": "pending",
+      "sourceUrl": null,
+      "licenseStatus": "unverified",
+      "reviewStatus": "needs_image"
+    },
+    {
+      "article": "48210",
+      "name": "Jägerschnitzel",
+      "imageUrl": null,
+      "imageType": "pending",
+      "sourceUrl": null,
+      "licenseStatus": "unverified",
+      "reviewStatus": "needs_image"
+    }
+  ]
+}
