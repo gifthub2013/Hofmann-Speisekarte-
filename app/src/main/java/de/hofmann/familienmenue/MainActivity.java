@@ -45,6 +45,7 @@ public class MainActivity extends Activity {
   Spinner user;
   TextView stats;
   boolean showRemoved=false;
+  boolean compactMode=false;
   int green=Color.rgb(28,83,56);
   int cream=Color.rgb(251,248,240);
   String foodIcon(String id){
@@ -105,6 +106,7 @@ public class MainActivity extends Activity {
     TextView title=text("Was gibt’s heute Leckeres? 🍽️",27,true);title.setTextColor(Color.WHITE);hero.addView(title);
     TextView subtitle=text("19 Gerichte · für Joel, Hannes und Nicole",14,false);subtitle.setTextColor(Color.WHITE);hero.addView(subtitle);
     root.addView(hero);gap(root,14);
+    button(root,compactMode?"Große Menüansicht":"Kompakte Menüansicht",()->{compactMode=!compactMode;render();});gap(root,10);
     TextView warning=text("Lokale Testversion: Änderungen sind noch nicht zwischen den Handys synchronisiert. Portionszahlen aus der Fotoauswertung müssen auf Doppelbilder geprüft werden. Originalfotos folgen.",13,false);warning.setBackground(bg(Color.rgb(255,244,208)));warning.setPadding(14,14,14,14);root.addView(warning);
     root.addView(text("Wer wählt aus?",17,true));
     user=new Spinner(this);String[] people={"Joel","Hannes","Nicole"};ArrayAdapter<String> adapter=new ArrayAdapter<>(this,android.R.layout.simple_spinner_dropdown_item,people);user.setAdapter(adapter);String last=prefs.getString("person","Joel");for(int i=0;i<people.length;i++)if(people[i].equals(last))user.setSelection(i);user.setOnItemSelectedListener(new android.widget.AdapterView.OnItemSelectedListener(){public void onNothingSelected(android.widget.AdapterView<?> p){}public void onItemSelected(android.widget.AdapterView<?> p,View v,int pos,long id){prefs.edit().putString("person",people[pos]).apply();}});root.addView(user);
@@ -119,12 +121,12 @@ public class MainActivity extends Activity {
       boolean any=false;for(int j=1;j<=Integer.parseInt(m[3]);j++)if(!prefs.getString(key(m[1],j),"").equals("done"))any=true;
       if(!any)continue;
       LinearLayout imageHeader=new LinearLayout(this);imageHeader.setGravity(Gravity.CENTER);imageHeader.setOrientation(1);
-      imageHeader.setBackground(bg(Color.rgb(238,241,227)));imageHeader.setPadding(10,24,10,24);
+      imageHeader.setBackground(bg(Color.rgb(238,241,227)));imageHeader.setPadding(10,compactMode?8:24,10,compactMode?8:24);
       TextView pict=text(foodIcon(m[1]),44,true);pict.setGravity(Gravity.CENTER);imageHeader.addView(pict);
       TextView imageNote=text("Illustratives Symbol · Produktfoto folgt",12,false);imageNote.setGravity(Gravity.CENTER);imageHeader.addView(imageNote);
       card.addView(imageHeader);gap(card,12);
-      card.addView(text(m[0],22,true));card.addView(text("HOFMANNs  ·  Art. "+m[1]+"  ·  "+m[2]+" g",13,false));
-      card.addView(text(m[4],16,false));gap(card,9);
+      card.addView(text(m[0],compactMode?19:22,true));card.addView(text("HOFMANNs  ·  Art. "+m[1]+"  ·  "+m[2]+" g",13,false));
+      if(!compactMode)card.addView(text(m[4],16,false));gap(card,9);
       String officialUrl = m[1].equals("48087") ? "https://hofmanns-shop.de/products/schweinesteak-au-four" : m[1].equals("48073") ? "https://hofmanns-shop.de/products/grunkohl-norddeutsche-art-1" : null;
       if(officialUrl!=null){ card.addView(text("Offizielles HOFMANNs-Produktfoto verfügbar",12,false)); button(card,"Original-Produktfoto ansehen",()->startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse(officialUrl)))); }
       else card.addView(text("Original-Produktfoto noch nicht verifiziert",12,false));
