@@ -1,6 +1,8 @@
 package de.hofmann.familienmenue;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -61,7 +63,9 @@ public class MainActivity extends Activity {
       if(!any)continue;
       card.addView(text(m[0],20,true));card.addView(text("Artikel "+m[1]+" · "+m[2]+" g je Portion",13,false));
       card.addView(text(m[4],15,false));
-      card.addView(text("Original-Produktfoto noch nicht eingebunden",12,false));
+      String officialUrl = m[1].equals("48087") ? "https://hofmanns-shop.de/products/schweinesteak-au-four" : m[1].equals("48073") ? "https://hofmanns-shop.de/products/grunkohl-norddeutsche-art-1" : null;
+      if(officialUrl!=null){ card.addView(text("Offizielles HOFMANNs-Produktfoto verfügbar",12,false)); button(card,"Original-Produktfoto ansehen",()->startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse(officialUrl)))); }
+      else card.addView(text("Original-Produktfoto noch nicht verifiziert",12,false));
       for(int j=1;j<=Integer.parseInt(m[3]);j++){
         final String k=key(m[1],j);String v=prefs.getString(k,"");if(v.equals("done"))continue;
         LinearLayout slot=new LinearLayout(this);slot.setOrientation(1);slot.setPadding(10,10,10,10);slot.setBackground(bg(Color.rgb(237,243,239)));
