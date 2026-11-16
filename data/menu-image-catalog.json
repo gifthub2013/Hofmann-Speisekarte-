@@ -1,183 +1,183 @@
 {
   "schemaVersion": 1,
-  "note": "Artikelnummern und Namen aus MainActivity.java; Bild-URLs erst nach Quellen- und Lizenzprüfung freigeben. Vergleichsbilder eindeutig kennzeichnen.",
+  "note": "19 image candidates researched; photo URLs not runtime-tested or licensed. Comparison photos may differ from actual HOFMANNs dish. Do not publish third-party images without permission.",
   "items": [
     {
       "article": "48093",
       "name": "Tagliatelle mit weißem Spargel",
-      "imageUrl": null,
-      "imageType": "pending",
-      "sourceUrl": null,
-      "licenseStatus": "unverified",
-      "reviewStatus": "needs_image"
+      "imageUrl": "https://img.hellofresh.com/f_auto%2Cfl_lossy%2Ch_640%2Cq_auto%2Cw_1200/hellofresh_s3/image/HF_Y23_R72_W22_BNL_P6768-1_Main__3low-3d47e17e.jpg",
+      "imageType": "comparison",
+      "sourceUrl": "https://www.hellofresh.nl/recipes/verse-tagliatelle-met-witte-asperges-in-romige-saus-63c7cdbe00ace46356b3d78f",
+      "licenseStatus": "permission_not_verified",
+      "reviewStatus": "candidate_found_not_licensed_or_runtime_tested"
     },
     {
       "article": "6816",
       "name": "Kartoffel-Gemüseeintopf",
-      "imageUrl": null,
-      "imageType": "pending",
-      "sourceUrl": null,
-      "licenseStatus": "unverified",
-      "reviewStatus": "needs_image"
+      "imageUrl": "https://www.arise-app.com/images/dishes/de/kartoffeleintopf-r25a7k.webp",
+      "imageType": "comparison",
+      "sourceUrl": "https://www.arise-app.com/de/gericht/Kartoffel-Eintopf",
+      "licenseStatus": "permission_not_verified",
+      "reviewStatus": "candidate_found_not_licensed_or_runtime_tested"
     },
     {
       "article": "48939",
       "name": "Planted Hack Bolognese Style",
-      "imageUrl": null,
-      "imageType": "pending",
-      "sourceUrl": null,
-      "licenseStatus": "unverified",
-      "reviewStatus": "needs_image"
+      "imageUrl": "https://media.hellofresh.com/q_100%2Cw_3840%2Cf_auto%2Cc_limit%2Cfl_lossy/recipes/image/HF220907_R32_W44_DE_R4301-1_MB_Main_2_low-51f3618e.jpg",
+      "imageType": "comparison",
+      "sourceUrl": "https://www.hellofresh.de/recipes/spaghetti-bolognese-mit-tofuhack-66ba1cefa68bc448dd4487f4",
+      "licenseStatus": "permission_not_verified",
+      "reviewStatus": "candidate_found_not_licensed_or_runtime_tested"
     },
     {
       "article": "48087",
       "name": "Schweinesteak au four",
-      "imageUrl": null,
-      "imageType": "pending",
-      "sourceUrl": null,
-      "licenseStatus": "unverified",
-      "reviewStatus": "needs_image"
+      "imageUrl": "https://hofmanns-shop.de/cdn/shop/files/48087_Schweinesteak_au_four_720ef597-8081-4fdc-b577-00d11ff5dd09.png?v=1774605637",
+      "imageType": "official",
+      "sourceUrl": "https://hofmanns-shop.de/products/schweinesteak-au-four",
+      "licenseStatus": "permission_not_verified",
+      "reviewStatus": "candidate_found_not_licensed_or_runtime_tested"
     },
     {
       "article": "48076",
       "name": "Grillteller Griechische Art",
-      "imageUrl": null,
-      "imageType": "pending",
-      "sourceUrl": null,
-      "licenseStatus": "unverified",
-      "reviewStatus": "needs_image"
+      "imageUrl": "https://dishlocal.com/restaurants/images/dishes-png/grillteller-mix.png",
+      "imageType": "comparison",
+      "sourceUrl": "https://dishlocal.com/restaurants/deutschland/trittau/grillteller/grillteller-mix",
+      "licenseStatus": "permission_not_verified",
+      "reviewStatus": "candidate_found_not_licensed_or_runtime_tested"
     },
     {
       "article": "7215",
       "name": "Herzhafter Kasseler Nacken",
-      "imageUrl": null,
+      "imageUrl": "https://www.daskochrezept.de/sites/daskochrezept.de/files/styles/full_width_tablet_4_3/public/2021-05/kassler_mit_sauerkraut_1.jpg?h=a1e1a043u0026itok%3DSYaA6weH",
       "imageType": "comparison",
-      "sourceUrl": "https://hofmanns-shop.de/products/kasseler-in-honig-senf-sosse",
-      "licenseStatus": "unverified",
-      "reviewStatus": "similar_variant_only",
+      "sourceUrl": "https://www.rezeptesuchen.com/r/kasseler-mit-sauerkraut-und-kartoffelp%C3%BCree-24585",
+      "licenseStatus": "permission_not_verified",
+      "reviewStatus": "candidate_found_not_licensed_or_runtime_tested",
       "notes": "Honig-Senf/Wirsing statt Sauerkraut/Kartoffelpüree; besser vorhandenes Bild aus Screenshots"
     },
     {
       "article": "48528",
       "name": "Green Chicken Bowl",
-      "imageUrl": null,
-      "imageType": "pending",
-      "sourceUrl": null,
-      "licenseStatus": "unverified",
-      "reviewStatus": "needs_image"
+      "imageUrl": "https://www.unileverfoodsolutions.at/dam/global-ufs/mcos/dach/calcmenu-recipes/ch-recipes/2023/plantmade-q2/plantmade-q2-salatbowle-mit-spinat-und-crispychicken/plantmade-q2-salatbowle-mit-spinat-und-crispychicken-header.jpg",
+      "imageType": "comparison",
+      "sourceUrl": "https://www.unileverfoodsolutions.at/rezepte/green-bowl-mit-spinat-crispy-burger-streifen-und-veganem-kraeuterdressing-R90015807.html",
+      "licenseStatus": "permission_not_verified",
+      "reviewStatus": "candidate_found_not_licensed_or_runtime_tested"
     },
     {
       "article": "48461",
       "name": "Chili-Käse-Bällchen",
-      "imageUrl": null,
-      "imageType": "pending",
-      "sourceUrl": null,
-      "licenseStatus": "unverified",
-      "reviewStatus": "needs_image"
+      "imageUrl": "https://s3.eu-west-3.amazonaws.com/fr.du-jour.menu.medias/0/7/8/3/3/407833/25702_1769617595.jpeg",
+      "imageType": "comparison",
+      "sourceUrl": "https://icioncuisine.com/restaurant/la-trattoria-du-moustier/25702",
+      "licenseStatus": "permission_not_verified",
+      "reviewStatus": "candidate_found_not_licensed_or_runtime_tested"
     },
     {
       "article": "48418",
       "name": "Würstchengulasch",
-      "imageUrl": null,
-      "imageType": "pending",
-      "sourceUrl": null,
-      "licenseStatus": "unverified",
-      "reviewStatus": "needs_image"
+      "imageUrl": "https://fivi.gg/cdn/shop/articles/wurstchengulasch_blogbild_v1.jpg?v=1773673867",
+      "imageType": "comparison",
+      "sourceUrl": "https://fivi.gg/blogs/rezepte/wuerstchengulasch-fivi-rezepte",
+      "licenseStatus": "permission_not_verified",
+      "reviewStatus": "candidate_found_not_licensed_or_runtime_tested"
     },
     {
       "article": "6315",
       "name": "Kartoffeltaschen",
-      "imageUrl": null,
-      "imageType": "pending",
-      "sourceUrl": "https://hofmanns-shop.de/pages/superfoods",
-      "licenseStatus": "unverified",
-      "reviewStatus": "photo_not_confirmed",
+      "imageUrl": "https://primary.jwwb.nl/public/i/z/n/temp-tdhskojadwuiusgmymlr/13544-00-high.jpg?enable=upscale&enable-io=true&fit=bounds&width=1200",
+      "imageType": "comparison",
+      "sourceUrl": "https://www.menueservicemitherz.de/product/14379768/63544-gefuellte-kartoffeltaschen-mit-frischkaesefuellung-dazu-gemuese-in-einer-kraeftigen-tomatensosse",
+      "licenseStatus": "permission_not_verified",
+      "reviewStatus": "candidate_found_not_licensed_or_runtime_tested",
       "notes": "Hersteller erwähnt Kartoffeltaschen, Einzelbild nicht nachgewiesen"
     },
     {
       "article": "7914",
       "name": "Grießauflauf",
-      "imageUrl": null,
-      "imageType": "pending",
-      "sourceUrl": null,
-      "licenseStatus": "unverified",
-      "reviewStatus": "needs_image"
+      "imageUrl": "https://static.chefkoch-cdn.de/ck.de/rezepte/152/152136/1121563-960x720-quark-griess-pfirsich-auflauf.jpg",
+      "imageType": "comparison",
+      "sourceUrl": "https://www.chefkoch.de/rezepte/1521361257339274/Quark-Griess-Pfirsich-Auflauf.html",
+      "licenseStatus": "permission_not_verified",
+      "reviewStatus": "candidate_found_not_licensed_or_runtime_tested"
     },
     {
       "article": "8305",
       "name": "Zartes Kalbsschnitzel paniert",
-      "imageUrl": null,
-      "imageType": "official_photo",
-      "sourceUrl": "https://hofmanns-shop.de/pages/schnitzelbox-landingpage",
-      "licenseStatus": "unverified",
-      "reviewStatus": "official_image_confirmed_variant_differs",
+      "imageUrl": "https://hofmanns-shop.de/cdn/shop/products/zartes-kalbsschnitzel-paniert_48300_2.jpg?v=1773871139&width=1445",
+      "imageType": "official_variant",
+      "sourceUrl": "https://hofmanns-shop.de/products/zartes-kalbsschnitzel-paniert",
+      "licenseStatus": "permission_not_verified",
+      "reviewStatus": "candidate_found_not_licensed_or_runtime_tested",
       "notes": "Hersteller zeigt Kalbsschnitzel mit Sahnesauce, Rösti-Ecken und Gemüse; App nennt Salzkartoffeln, deshalb Bild als abweichende Variante kennzeichnen."
     },
     {
       "article": "6720",
       "name": "Schaschlikpfanne",
-      "imageUrl": null,
+      "imageUrl": "https://storefront-prod.de.picnicinternational.com/static/images/recipes/8887f312e0e7f4f44043e8dc17c980626b3a73f06a93245667a44eb47c462be2/filled-600x600.webp",
       "imageType": "comparison",
-      "sourceUrl": "https://hofmanns-shop.de/products/feurige-schaschlikpfanne",
-      "licenseStatus": "unverified",
-      "reviewStatus": "similar_variant_only",
+      "sourceUrl": "https://picnic.app/de/rezepte/681229b4d7b2342804370f1b/reis-schnitzel-topf-mit-paprika",
+      "licenseStatus": "permission_not_verified",
+      "reviewStatus": "candidate_found_not_licensed_or_runtime_tested",
       "notes": "Shopvariante mit Pommes 530g; Appvariante Reis 390g. Nicht als identisches Produkt kennzeichnen"
     },
     {
       "article": "48909",
       "name": "Rucola-Spinat-Spaghetti",
-      "imageUrl": null,
-      "imageType": "pending",
-      "sourceUrl": null,
-      "licenseStatus": "unverified",
-      "reviewStatus": "avoid_misleading_photo",
+      "imageUrl": "https://hofmanns-shop.de/cdn/shop/files/rucola-spinat-spaghetti_48909_2_9174a22b-51b9-4e46-9d9e-3c83936a82e3.jpg?v=1773871611",
+      "imageType": "official",
+      "sourceUrl": "https://hofmanns-shop.de/products/rucola-spinat-spaghetti-1",
+      "licenseStatus": "permission_not_verified",
+      "reviewStatus": "candidate_found_not_licensed_or_runtime_tested",
       "notes": "Schnitzel à la Carbonara zeigt Spinat-Spaghetti, ist aber kein Foto der Rucola-Spinat-Spaghetti. Nicht als Originalfoto verwenden."
     },
     {
       "article": "48526",
       "name": "Sahne-Tomaten-Hähnchen",
-      "imageUrl": null,
-      "imageType": "pending",
-      "sourceUrl": null,
-      "licenseStatus": "unverified",
-      "reviewStatus": "needs_image"
+      "imageUrl": "https://production-media.gousto.co.uk/cms/mood-image/2032---10-Min-Creamy-Tomato--Chicken-Gnocchi-0086-1638875810949-x700.jpg",
+      "imageType": "comparison",
+      "sourceUrl": "https://www.gousto.co.uk/cookbook/recipes/creamy-tomato-chicken-gnocchi",
+      "licenseStatus": "permission_not_verified",
+      "reviewStatus": "candidate_found_not_licensed_or_runtime_tested"
     },
     {
       "article": "41001",
       "name": "Schweinefleisch Rügener Art",
-      "imageUrl": null,
-      "imageType": "pending",
-      "sourceUrl": null,
-      "licenseStatus": "unverified",
-      "reviewStatus": "needs_image"
+      "imageUrl": "https://img.chefkoch-cdn.de/rezepte/1900801309789793/bilder/368419/crop-960x540/schweinefleisch-ruegener-art.jpg",
+      "imageType": "comparison",
+      "sourceUrl": "https://www.chefkoch.de/rezepte/1900801309789793/Schweinefleisch-Ruegener-Art.html",
+      "licenseStatus": "permission_not_verified",
+      "reviewStatus": "candidate_found_not_licensed_or_runtime_tested"
     },
     {
       "article": "48073",
       "name": "Grünkohl Norddeutsche Art",
-      "imageUrl": null,
-      "imageType": "pending",
-      "sourceUrl": null,
-      "licenseStatus": "unverified",
-      "reviewStatus": "needs_image"
+      "imageUrl": "https://www.univers-reisen.de/fileadmin/processed_files/8/a/csm_iStock-2027208998_Gruenkohl_Wurst_Fleisch_xl_0bc288d402.webp",
+      "imageType": "comparison",
+      "sourceUrl": "https://www.univers-reisen.de/reisen/detail/2444341-gruenkohlessen-auf-schloss-walbeck-und-kevelaer",
+      "licenseStatus": "permission_not_verified",
+      "reviewStatus": "candidate_found_not_licensed_or_runtime_tested"
     },
     {
       "article": "7524",
       "name": "Zarte Entenkeule",
-      "imageUrl": null,
-      "imageType": "official_page_image",
+      "imageUrl": "https://hofmanns-shop.de/cdn/shop/files/Weihnachten-Entenkeule_715d3edc-f32d-4176-a4d9-3d87ab9171b9.jpg?v=1700234541&width=1420",
+      "imageType": "official",
       "sourceUrl": "https://hofmanns-shop.de/pages/reinheitsgebot",
-      "licenseStatus": "unverified",
-      "reviewStatus": "official_photo_variant_check",
+      "licenseStatus": "permission_not_verified",
+      "reviewStatus": "candidate_found_not_licensed_or_runtime_tested",
       "notes": "Hersteller zeigt Entenkeule mit Bratapfelsoße, Rotkohl und Klößen"
     },
     {
       "article": "48210",
       "name": "Jägerschnitzel",
-      "imageUrl": null,
-      "imageType": "official_photo",
-      "sourceUrl": "https://hofmanns-shop.de/products/jagerschnitzel",
-      "licenseStatus": "unverified",
-      "reviewStatus": "official_image_confirmed",
+      "imageUrl": "https://schmackhaftesleben.de/assets/images/1760135433093-ljqnp16s.jpg",
+      "imageType": "comparison",
+      "sourceUrl": "https://schmackhaftesleben.de/recipes/jaegerschnitzel-mit-pommes",
+      "licenseStatus": "permission_not_verified",
+      "reviewStatus": "candidate_found_not_licensed_or_runtime_tested",
       "notes": "Originalfoto mit Champignon-Rahmsoße und Pommes, 550g; Katalog bestätigt Art. 48210."
     }
   ]
