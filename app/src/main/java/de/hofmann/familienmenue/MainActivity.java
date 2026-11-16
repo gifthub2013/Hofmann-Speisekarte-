@@ -111,8 +111,8 @@ public class MainActivity extends Activity {
     int free=0,res=0,done=0;
     for(String[] m:menus)for(int j=1;j<=Integer.parseInt(m[3]);j++){String v=prefs.getString(key(m[1],j),"");if(v.equals("done"))done++;else if(v.isEmpty())free++;else res++;}
     LinearLayout counts=new LinearLayout(this);counts.setOrientation(0);counts.setGravity(Gravity.CENTER_VERTICAL);
-    TextView a=pill("✓ "+free+" frei",green),b=pill("◷ "+res+" reserviert",green),c=pill("☑ "+done+" gegessen",green);
-    counts.addView(a);counts.addView(b);counts.addView(c);root.addView(counts);gap(root,12);
+    TextView a=pill("✓ "+free+" frei",green),b=pill("◷ "+res+" reserviert",green),countDone=pill("☑ "+done+" gegessen",green);
+    counts.addView(a);counts.addView(b);counts.addView(countDone);root.addView(counts);gap(root,12);
     list=new LinearLayout(this);list.setOrientation(1);root.addView(list);
     for(String[] m:menus){
       LinearLayout card=new LinearLayout(this);card.setOrientation(1);card.setPadding(20,18,20,18);card.setBackground(bg(Color.WHITE));LinearLayout.LayoutParams cp=new LinearLayout.LayoutParams(-1,-2);cp.setMargins(0,10,0,10);
