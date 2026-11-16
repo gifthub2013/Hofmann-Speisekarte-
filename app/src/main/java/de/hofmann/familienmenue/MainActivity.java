@@ -259,26 +259,26 @@ public class MainActivity extends Activity {
       if(filter.equals("Frei")&&free==0)continue;
       if(filter.equals("Reserviert")&&reserved==0)continue;
       LinearLayout card=new LinearLayout(this);card.setOrientation(1);
-      card.setPadding(15,14,15,14);card.setBackground(bg(Color.WHITE));
+      card.setPadding(12,12,12,12);card.setBackground(bg(Color.WHITE));
       LinearLayout.LayoutParams cp=new LinearLayout.LayoutParams(-1,-2);cp.setMargins(0,6,0,8);
-      LinearLayout headline=new LinearLayout(this);headline.setOrientation(0);headline.setGravity(Gravity.CENTER_VERTICAL);
+      LinearLayout headline=new LinearLayout(this);headline.setOrientation(1);
       String imageUrl=photoUrl(m[1]);
       if(imageUrl!=null){
         ImageView photo=new ImageView(this);
         photo.setScaleType(ImageView.ScaleType.CENTER_CROP);
         photo.setBackground(bg(Color.rgb(238,243,230)));
-        headline.addView(photo,new LinearLayout.LayoutParams(dp(118),dp(118)));
+        headline.addView(photo,new LinearLayout.LayoutParams(-1,dp(188)));
         loadPhoto(photo,imageUrl);
       }else{
         TextView photo=text(foodIcon(m[1]),39,true);photo.setGravity(Gravity.CENTER);
         photo.setBackground(bg(Color.rgb(238,243,230)));
-        headline.addView(photo,new LinearLayout.LayoutParams(dp(96),dp(96)));
+        headline.addView(photo,new LinearLayout.LayoutParams(-1,dp(188)));
       }
-      LinearLayout details=new LinearLayout(this);details.setOrientation(1);details.setPadding(14,0,0,0);
+      LinearLayout details=new LinearLayout(this);details.setOrientation(1);details.setPadding(0,dp(9),0,0);
       details.addView(text(m[0],19,true));
       details.addView(text(category(m[1])+"  ·  "+m[2]+" g",12,false));
       TextView status=pill(free+" frei  ·  "+reserved+" reserviert",green);details.addView(status);
-      headline.addView(details,new LinearLayout.LayoutParams(0,-2,1));
+      headline.addView(details,new LinearLayout.LayoutParams(-1,-2));
       card.addView(headline);
       boolean expanded=expandedArticle.equals(m[1]);
       Button toggle=new Button(this);toggle.setAllCaps(false);
