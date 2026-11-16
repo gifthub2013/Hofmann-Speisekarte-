@@ -46,8 +46,12 @@ public class MainActivity extends Activity {
   TextView stats;
   boolean showRemoved=false;
   boolean compactMode=false;
+  String searchQuery="";
+  String filter="Alle";
+  String expandedArticle="";
   int green=Color.rgb(28,83,56);
-  int cream=Color.rgb(251,248,240);
+  int cream=Color.rgb(247,249,246);
+  int lime=Color.rgb(190,235,83);
   String foodIcon(String id){
     switch(id){
       case "48093":case "48939":case "48909":return "🍝";
@@ -99,58 +103,133 @@ public class MainActivity extends Activity {
     e.putString(k,value).apply();render();
   }
   void render(){
-    ScrollView scroll=new ScrollView(this);scroll.setFillViewport(true);
-    LinearLayout root=new LinearLayout(this);root.setOrientation(1);root.setPadding(22,24,22,24);root.setBackgroundColor(cream);scroll.addView(root);setContentView(scroll);
-    LinearLayout hero=new LinearLayout(this);hero.setOrientation(1);hero.setPadding(23,22,23,22);hero.setBackground(bg(green));
-    TextView eyebrow=text("UNSERE FAMILIENKÜCHE",12,true);eyebrow.setTextColor(Color.rgb(224,233,211));hero.addView(eyebrow);
-    TextView title=text("Was gibt’s heute Leckeres? 🍽️",27,true);title.setTextColor(Color.WHITE);hero.addView(title);
-    TextView subtitle=text("19 Gerichte · für Joel, Hannes und Nicole",14,false);subtitle.setTextColor(Color.WHITE);hero.addView(subtitle);
-    root.addView(hero);gap(root,14);
-    button(root,compactMode?"Große Menüansicht":"Kompakte Menüansicht",()->{compactMode=!compactMode;render();});gap(root,10);
-    TextView warning=text("Lokale Testversion: Änderungen sind noch nicht zwischen den Handys synchronisiert. Portionszahlen aus der Fotoauswertung müssen auf Doppelbilder geprüft werden. Originalfotos folgen.",13,false);warning.setBackground(bg(Color.rgb(255,244,208)));warning.setPadding(14,14,14,14);root.addView(warning);
-    root.addView(text("Wer wählt aus?",17,true));
-    user=new Spinner(this);String[] people={"Joel","Hannes","Nicole"};ArrayAdapter<String> adapter=new ArrayAdapter<>(this,android.R.layout.simple_spinner_dropdown_item,people);user.setAdapter(adapter);String last=prefs.getString("person","Joel");for(int i=0;i<people.length;i++)if(people[i].equals(last))user.setSelection(i);user.setOnItemSelectedListener(new android.widget.AdapterView.OnItemSelectedListener(){public void onNothingSelected(android.widget.AdapterView<?> p){}public void onItemSelected(android.widget.AdapterView<?> p,View v,int pos,long id){prefs.edit().putString("person",people[pos]).apply();}});root.addView(user);
+    getWindow().setStatusBarColor(green);
+    getWindow().setNavigationBarColor(Color.rgb(247,249,246));
+    ScrollView scroll=new ScrollView(this);
+    LinearLayout root=new LinearLayout(this);
+    root.setOrientation(1);root.setPadding(16,18,16,24);root.setBackgroundColor(cream);
+    scroll.addView(root);setContentView(scroll);
+    LinearLayout hero=new LinearLayout(this);hero.setOrientation(1);hero.setPadding(22,22,22,22);
+    hero.setBackground(bg(green));
+    TextView eyebrow=text("UNSERE FAMILIENKÜCHE  •  HOFMANNs",12,true);
+    eyebrow.setTextColor(lime);hero.addView(eyebrow);
+    TextView title=text("Was essen wir heute?",27,true);title.setTextColor(Color.WHITE);hero.addView(title);
+    TextView subtitle=text("19 Gerichte  •  36 Portionen",14,false);subtitle.setTextColor(Color.WHITE);hero.addView(subtitle);
+    root.addView(hero);gap(root,16);
+    TextView who=text("Für wen suchst du etwas?",15,true);root.addView(who);
+    user=new Spinner(this);
+    String[] people={"Joel","Hannes","Nicole"};
+    ArrayAdapter<String> adapter=new ArrayAdapter<>(this,android.R.layout.simple_spinner_dropdown_item,people);
+    user.setAdapter(adapter);
+    String last=prefs.getString("person","Joel");
+    for(int i=0;i<people.length;i++)if(people[i].equals(last))user.setSelection(i);
+    user.setOnItemSelectedListener(new android.widget.AdapterView.OnItemSelectedListener(){
+      public void onNothingSelected(android.widget.AdapterView<?> p){}
+      public void onItemSelected(android.widget.AdapterView<?> p,View v,int pos,long id){
+        prefs.edit().putString("person",people[pos]).apply();
+      }
+    });
+    root.addView(user);gap(root,8);
     int free=0,res=0,done=0;
-    for(String[] m:menus)for(int j=1;j<=Integer.parseInt(m[3]);j++){String v=prefs.getString(key(m[1],j),"");if(v.equals("done"))done++;else if(v.isEmpty())free++;else res++;}
-    LinearLayout counts=new LinearLayout(this);counts.setOrientation(0);counts.setGravity(Gravity.CENTER_VERTICAL);
-    TextView a=pill("✓ "+free+" frei",green),b=pill("◷ "+res+" reserviert",green),countDone=pill("☑ "+done+" gegessen",green);
-    counts.addView(a);counts.addView(b);counts.addView(countDone);root.addView(counts);gap(root,12);
+    for(String[] m:menus)for(int j=1;j<=Integer.parseInt(m[3]);j++){
+      String v=prefs.getString(key(m[1],j),"");
+      if(v.equals("done"))done++;else if(v.isEmpty())free++;else res++;
+    }
+    LinearLayout counts=new LinearLayout(this);counts.setOrientation(0);
+    TextView a=pill(free+" frei",green),b=pill(res+" reserviert",green),c=pill(done+" gegessen",green);
+    counts.addView(a,new LinearLayout.LayoutParams(0,-2,1));
+    counts.addView(b,new LinearLayout.LayoutParams(0,-2,1));
+    counts.addView(c,new LinearLayout.LayoutParams(0,-2,1));
+    root.addView(counts);gap(root,15);
+    EditText search=new EditText(this);
+    search.setSingleLine(true);search.setTextSize(16);search.setHint("🔎  Gericht oder Artikel suchen");
+    search.setPadding(18,14,18,14);search.setBackground(bg(Color.WHITE));
+    search.setText(searchQuery);
+    search.addTextChangedListener(new android.text.TextWatcher(){
+      public void beforeTextChanged(CharSequence x,int st,int count,int after){}
+      public void onTextChanged(CharSequence x,int st,int before,int count){searchQuery=x.toString();populateMenuList();}
+      public void afterTextChanged(android.text.Editable x){}
+    });
+    root.addView(search);gap(root,10);
+    LinearLayout tabs=new LinearLayout(this);tabs.setOrientation(0);
+    for(String label:new String[]{"Alle","Frei","Reserviert"}){
+      Button b=new Button(this);b.setText(label);b.setTextSize(12);b.setAllCaps(false);
+      b.setTextColor(label.equals(filter)?Color.WHITE:green);
+      b.setBackground(bg(label.equals(filter)?green:Color.rgb(229,237,229)));
+      b.setOnClickListener(v->{filter=label;render();});
+      LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(0,48,1);lp.setMargins(2,0,2,0);tabs.addView(b,lp);
+    }
+    root.addView(tabs);gap(root,8);
     list=new LinearLayout(this);list.setOrientation(1);root.addView(list);
+    populateMenuList();
+    gap(root,18);
+    button(root,showRemoved?"Vergangene Mahlzeiten ausblenden":"📅  Essenshistorie anzeigen",()->{showRemoved=!showRemoved;render();});
+    if(showRemoved)for(String[] m:menus)for(int j=1;j<=Integer.parseInt(m[3]);j++){
+      final String k=key(m[1],j);
+      if(prefs.getString(k,"").equals("done")){
+        LinearLayout history=new LinearLayout(this);history.setOrientation(1);
+        history.setPadding(14,10,14,10);history.setBackground(bg(Color.WHITE));
+        history.addView(text(m[0]+" · Portion "+j,15,true));
+        String h=prefs.getString("history-"+k,"");
+        if(!h.isEmpty())history.addView(text(h.replace("|"," · "),13,false));
+        button(history,"Wiederherstellen",()->change(k,""));
+        root.addView(history);gap(root,7);
+      }
+    }
+    root.addView(text("Familien-Testversion · Auswahl bleibt auf diesem Gerät gespeichert",11,false));
+  }
+  void populateMenuList(){
+    if(list==null)return;
+    list.removeAllViews();
     for(String[] m:menus){
-      LinearLayout card=new LinearLayout(this);card.setOrientation(1);card.setPadding(20,18,20,18);card.setBackground(bg(Color.WHITE));LinearLayout.LayoutParams cp=new LinearLayout.LayoutParams(-1,-2);cp.setMargins(0,10,0,10);
-      boolean any=false;for(int j=1;j<=Integer.parseInt(m[3]);j++)if(!prefs.getString(key(m[1],j),"").equals("done"))any=true;
-      if(!any)continue;
-      LinearLayout imageHeader=new LinearLayout(this);imageHeader.setGravity(Gravity.CENTER);imageHeader.setOrientation(1);
-      imageHeader.setBackground(bg(Color.rgb(238,241,227)));imageHeader.setPadding(10,compactMode?8:24,10,compactMode?8:24);
-      TextView pict=text(foodIcon(m[1]),44,true);pict.setGravity(Gravity.CENTER);imageHeader.addView(pict);
-      TextView imageNote=text("Illustratives Symbol · Produktfoto folgt",12,false);imageNote.setGravity(Gravity.CENTER);imageHeader.addView(imageNote);
-      card.addView(imageHeader);gap(card,12);
-      card.addView(text(m[0],compactMode?19:22,true));card.addView(text("HOFMANNs  ·  Art. "+m[1]+"  ·  "+m[2]+" g",13,false));
-      if(!compactMode)card.addView(text(m[4],16,false));gap(card,9);
-      String officialUrl = m[1].equals("48087") ? "https://hofmanns-shop.de/products/schweinesteak-au-four" : m[1].equals("48073") ? "https://hofmanns-shop.de/products/grunkohl-norddeutsche-art-1" : null;
-      if(officialUrl!=null){ card.addView(text("Offizielles HOFMANNs-Produktfoto verfügbar",12,false)); button(card,"Original-Produktfoto ansehen",()->startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse(officialUrl)))); }
-      else card.addView(text("Original-Produktfoto noch nicht verifiziert",12,false));
+      if(!(m[0]+" "+m[1]+" "+m[4]).toLowerCase(Locale.GERMANY).contains(searchQuery.toLowerCase(Locale.GERMANY)))continue;
+      int free=0,reserved=0;
       for(int j=1;j<=Integer.parseInt(m[3]);j++){
-        final String k=key(m[1],j);String v=prefs.getString(k,"");if(v.equals("done"))continue;
-        LinearLayout slot=new LinearLayout(this);slot.setOrientation(1);slot.setPadding(10,10,10,10);slot.setBackground(bg(Color.rgb(245,246,239)));
-        slot.addView(text("Portion "+j+"  ·  "+(v.isEmpty()?"✓ VERFÜGBAR":"● RESERVIERT VON "+v.toUpperCase(Locale.GERMANY)),14,true));
-        if(v.isEmpty())button(slot,"Reservieren und Uhrzeit wählen",()->choosePreparationTime(k,user.getSelectedItem().toString()));
-        else {
-          String planned=prefs.getString("planned-"+k,"");
-          slot.addView(text("Geplante Zubereitung: "+(planned.isEmpty()?"nicht angegeben":planned+" Uhr"),14,false));
-          button(slot,"Uhrzeit ändern",()->choosePreparationTime(k,v));
-          button(slot,"Reservierung freigeben",()->change(k,""));
+        String value=prefs.getString(key(m[1],j),"");
+        if(value.isEmpty())free++;else if(!value.equals("done"))reserved++;
+      }
+      if(free+reserved==0)continue;
+      if(filter.equals("Frei")&&free==0)continue;
+      if(filter.equals("Reserviert")&&reserved==0)continue;
+      LinearLayout card=new LinearLayout(this);card.setOrientation(1);
+      card.setPadding(15,14,15,14);card.setBackground(bg(Color.WHITE));
+      LinearLayout.LayoutParams cp=new LinearLayout.LayoutParams(-1,-2);cp.setMargins(0,6,0,8);
+      LinearLayout headline=new LinearLayout(this);headline.setOrientation(0);headline.setGravity(Gravity.CENTER_VERTICAL);
+      TextView photo=text(foodIcon(m[1]),39,true);photo.setGravity(Gravity.CENTER);
+      photo.setBackground(bg(Color.rgb(238,243,230)));
+      headline.addView(photo,new LinearLayout.LayoutParams(94,94));
+      LinearLayout details=new LinearLayout(this);details.setOrientation(1);details.setPadding(14,0,0,0);
+      details.addView(text(m[0],19,true));
+      details.addView(text(m[2]+" g  ·  Art. "+m[1],12,false));
+      TextView status=pill(free+" frei  ·  "+reserved+" reserviert",green);details.addView(status);
+      headline.addView(details,new LinearLayout.LayoutParams(0,-2,1));
+      card.addView(headline);
+      boolean expanded=expandedArticle.equals(m[1]);
+      Button toggle=new Button(this);toggle.setAllCaps(false);
+      toggle.setText(expanded?"Weniger anzeigen  ⌃":"Gericht ansehen & auswählen  ⌄");
+      toggle.setOnClickListener(v->{expandedArticle=expanded? "":m[1];render();});
+      card.addView(toggle);
+      if(expanded){
+        card.addView(text(m[4],14,false));
+        for(int j=1;j<=Integer.parseInt(m[3]);j++){
+          final String k=key(m[1],j);
+          String value=prefs.getString(k,"");
+          if(value.equals("done"))continue;
+          LinearLayout slot=new LinearLayout(this);slot.setOrientation(1);
+          slot.setPadding(10,10,10,10);slot.setBackground(bg(Color.rgb(245,248,241)));
+          slot.addView(text("Portion "+j+"  ·  "+(value.isEmpty()?"Verfügbar":"Reserviert von "+value),14,true));
+          if(value.isEmpty())button(slot,"＋ Reservieren & Uhrzeit wählen",()->choosePreparationTime(k,user.getSelectedItem().toString()));
+          else{
+            String time=prefs.getString("planned-"+k,"");
+            slot.addView(text("Zubereitung: "+(time.isEmpty()?"nicht angegeben":time+" Uhr"),13,false));
+            button(slot,"Uhrzeit ändern",()->choosePreparationTime(k,value));
+            button(slot,"Reservierung freigeben",()->change(k,""));
+          }
+          button(slot,"✓ Als gegessen markieren",()->change(k,"done"));
+          card.addView(slot);gap(card,6);
         }
-        button(slot,"Zubereitet · aus Liste entfernen",()->change(k,"done"));
-        LinearLayout.LayoutParams sp=new LinearLayout.LayoutParams(-1,-2);sp.setMargins(0,4,0,8);card.addView(slot,sp);
       }
       list.addView(card,cp);
     }
-    button(root,showRemoved?"Essenshistorie ausblenden":"Vergangene Mahlzeiten anzeigen",()->{showRemoved=!showRemoved;render();});
-    if(showRemoved)for(String[] m:menus)for(int j=1;j<=Integer.parseInt(m[3]);j++){final String k=key(m[1],j);if(prefs.getString(k,"").equals("done")){LinearLayout c=new LinearLayout(this);c.setOrientation(1);c.addView(text(m[0]+" · Portion "+j,15,true));
-      String h=prefs.getString("history-"+k,"");
-      if(!h.isEmpty()){String[] parts=h.split("\\|",2);c.addView(text("Gegessen von "+parts[0]+(parts.length>1?" am "+parts[1]:""),14,false));}
-      else c.addView(text("Zubereitet · keine früheren Personendaten gespeichert",13,false));
-      button(c,"Wiederherstellen",()->change(k,""));root.addView(c);}}
   }
 }
