@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "verifiedProducts": [
+    {
+      "article": "48073",
+      "name": "Grünkohl Norddeutsche Art",
+      "weightG": 560,
+      "energyKcalPer100g": 190,
+      "energyKcalPerPortion": 1064,
+      "fatGPer100g": 12,
+      "saturatedFatGPer100g": 3,
+      "carbsGPer100g": 11,
+      "sugarGPer100g": 2,
+      "proteinGPer100g": 8,
+      "saltGPer100g": 1.48,
+      "allergens": [
+        "Gluten",
+        "Weizen",
+        "Hafer",
+        "Senf"
+      ],
+      "ingredients": "Grünkohl (30 %), Kartoffeln, geräucherte Bauernwurst (12 %), Kasseler Nacken (12 %), Zwiebeln (5 %), Rapsöl, durchwachsener Speck (2 %), Schweineschmalz, Senf, Weizenmehl, jodiertes Speisesalz, Haferflocken, Gewürze, Kräuter, Dextrose, Zucker; weitere Unterzutaten siehe Herstellerseite.",
+      "preparation": "Mikrowelle 9–11 Min. bei 800 W; Backofen 60 Min. bei 175 °C Ober-/Unterhitze; Heißluftgerät 45 Min. bei 140 °C.",
+      "source": "https://hofmanns-shop.de/products/grunkohl-norddeutsche-art-1",
+      "imageStatus": "official image not yet licensed/integrated"
+    }
+  ],
+  "unverifiedPolicy": "Keine Nährwerte, Allergene oder Originalfotos aus ähnlichen Produkten übernehmen. Jede Zuordnung über Artikelnummer und Produktvariante prüfen."
+}
