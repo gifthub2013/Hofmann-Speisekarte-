@@ -6,6 +6,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import android.graphics.Typeface;
 import android.view.View;
 import android.widget.*;
@@ -44,7 +47,17 @@ public class MainActivity extends Activity {
   TextView text(String s,int sp,boolean bold){TextView t=new TextView(this);t.setText(s);t.setTextSize(sp);t.setTextColor(Color.rgb(33,48,39));if(bold)t.setTypeface(null,Typeface.BOLD);t.setPadding(4,7,4,7);return t;}
   void button(LinearLayout box,String label,Runnable action){Button b=new Button(this);b.setText(label);b.setAllCaps(false);b.setOnClickListener(v->action.run());box.addView(b);}
   String key(String id,int n){return id+"-"+n;}
-  void change(String k,String value){prefs.edit().putString(k,value).apply();render();}
+  void change(String k,String value){
+    SharedPreferences.Editor e=prefs.edit();
+    String old=prefs.getString(k,"");
+    if("done".equals(value)&&!"done".equals(old)){
+      String person=old.isEmpty()?prefs.getString("person","Hannes"):old;
+      String date=new SimpleDateFormat("dd.MM.yyyy HH:mm",Locale.GERMANY).format(new Date());
+      e.putString("history-"+k,person+"|"+date);
+    }
+    if(!"done".equals(value)&&"done".equals(old))e.remove("history-"+k);
+    e.putString(k,value).apply();render();
+  }
   void render(){
     ScrollView scroll=new ScrollView(this);scroll.setFillViewport(true);
     LinearLayout root=new LinearLayout(this);root.setOrientation(1);root.setPadding(22,24,22,24);root.setBackgroundColor(Color.rgb(246,247,242));scroll.addView(root);setContentView(scroll);
@@ -77,7 +90,11 @@ public class MainActivity extends Activity {
       }
       list.addView(card,cp);
     }
-    button(root,showRemoved?"Entfernte Portionen ausblenden":"Entfernte Portionen anzeigen",()->{showRemoved=!showRemoved;render();});
-    if(showRemoved)for(String[] m:menus)for(int j=1;j<=Integer.parseInt(m[3]);j++){final String k=key(m[1],j);if(prefs.getString(k,"").equals("done")){LinearLayout c=new LinearLayout(this);c.setOrientation(1);c.addView(text(m[0]+" · Portion "+j,15,true));button(c,"Wiederherstellen",()->change(k,""));root.addView(c);}}
+    button(root,showRemoved?"Essenshistorie ausblenden":"Vergangene Mahlzeiten anzeigen",()->{showRemoved=!showRemoved;render();});
+    if(showRemoved)for(String[] m:menus)for(int j=1;j<=Integer.parseInt(m[3]);j++){final String k=key(m[1],j);if(prefs.getString(k,"").equals("done")){LinearLayout c=new LinearLayout(this);c.setOrientation(1);c.addView(text(m[0]+" · Portion "+j,15,true));
+      String h=prefs.getString("history-"+k,"");
+      if(!h.isEmpty()){String[] parts=h.split("\\|",2);c.addView(text("Gegessen von "+parts[0]+(parts.length>1?" am "+parts[1]:""),14,false));}
+      else c.addView(text("Zubereitet · keine früheren Personendaten gespeichert",13,false));
+      button(c,"Wiederherstellen",()->change(k,""));root.addView(c);}}
   }
 }
